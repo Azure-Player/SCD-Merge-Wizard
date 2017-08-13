@@ -8,8 +8,8 @@ namespace ScdMergeWizard
 {
     public static class GlobalVariables
     {
-        public static MyOleDbConnection SourceConnection = null;
-        public static MyOleDbConnection TargetConnection = null;
+        public static MyBaseDbConnection SourceConnection = null;
+        public static MyBaseDbConnection TargetConnection = null;
 
         public static List<MyDbColumn> SourceColumns = new List<MyDbColumn>();
         public static List<MyDbColumn> TargetColumns = new List<MyDbColumn>();

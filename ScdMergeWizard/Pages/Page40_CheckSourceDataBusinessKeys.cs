@@ -6,7 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.OleDb;
+using System.Data.Common;
 using ScdMergeWizard.Database;
 using ScdMergeWizard.ExcHandling;
 
@@ -52,13 +52,13 @@ namespace ScdMergeWizard.Pages
 
             try
             {
-                OleDbCommand cmd = GlobalVariables.SourceConnection.GetConn().CreateCommand();
+                DbCommand cmd = GlobalVariables.SourceConnection.GetConn().CreateCommand();
 
                 string businessKeysCsv = string.Join(",", GlobalVariables.ColumnMappings.Where(cm => cm.TransformationCode == ETransformationCode.BUSINESS_KEY).Select(c => c.SourceColumn).ToArray());
                 commandText += string.Format("WITH cte as ( SELECT {0} FROM {1} ) SELECT {0}, COUNT(*) AS [COUNT] FROM cte GROUP BY {0} HAVING COUNT(*) > 1", businessKeysCsv, GlobalVariables.SourceObjectName);
                 cmd.CommandText = commandText;
 
-                OleDbDataReader reader = cmd.ExecuteReader();
+                DbDataReader reader = cmd.ExecuteReader();
 
                 if (reader.HasRows)
                 {
@@ -118,7 +118,7 @@ namespace ScdMergeWizard.Pages
                 else
                     commandText = GlobalVariables.SourceCommandText;
 
-                OleDbDataAdapter adapter = new OleDbDataAdapter(commandText, GlobalVariables.SourceConnection.GetConn());
+                DbDataAdapter adapter = GlobalVariables.SourceConnection.CreateAdapter(commandText); // new DbDataAdapter(commandText, GlobalVariables.SourceConnection.GetConn());
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
 

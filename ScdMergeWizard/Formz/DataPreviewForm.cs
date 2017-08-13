@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.OleDb;
+using System.Data.Common;
 using ScdMergeWizard.Database;
 
 namespace ScdMergeWizard.Formz
@@ -14,12 +14,12 @@ namespace ScdMergeWizard.Formz
     public partial class DataPreviewForm : Form
     {
 
-        private MyOleDbConnection _conn;
+        private MyBaseDbConnection _conn;
         private string _sql;
 
         private const int MAX_DATA_ROWS_COUNT = 1000;
 
-        public DataPreviewForm(MyOleDbConnection conn, string sql)
+        public DataPreviewForm(MyBaseDbConnection conn, string sql)
         {
             InitializeComponent();
 
@@ -32,8 +32,8 @@ namespace ScdMergeWizard.Formz
             try
             {
                 this.Text = this.Text + " (up to " + MAX_DATA_ROWS_COUNT.ToString() + " records)";
-                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(_sql, _conn.GetConn());
-                OleDbCommandBuilder commandBuilder = new OleDbCommandBuilder(dataAdapter);
+                DbDataAdapter dataAdapter = _conn.CreateAdapter(_sql);
+                DbCommandBuilder commandBuilder = _conn.CreateCommandBuilder(dataAdapter);
 
                 dataGridView1.DataError += dataGridView1_DataError;
 

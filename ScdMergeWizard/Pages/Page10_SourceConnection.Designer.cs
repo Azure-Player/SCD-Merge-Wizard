@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.rtbSrcConnStr = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.rtbCommandText = new System.Windows.Forms.RichTextBox();
@@ -35,15 +36,21 @@
             this.rbIsTableOrView = new System.Windows.Forms.RadioButton();
             this.cbxSrcTableOrViewName = new ScdMergeWizard.Components.ImageComboBox();
             this.buttonPreviewData = new System.Windows.Forms.Button();
-            this.buttonEditConnectionString = new System.Windows.Forms.Button();
             this.buttonFilter = new System.Windows.Forms.Button();
             this.labelFilter = new System.Windows.Forms.Label();
+            this.btnEditCnn = new ExoticControls.SplitButton();
+            this.cmsEdit = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmiEditNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEditOld = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.cmsEdit.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ScdMergeWizard.Properties.Resources.database_arrow_right_icon;
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Size = new System.Drawing.Size(48, 48);
             // 
             // rtbSrcConnStr
             // 
@@ -129,17 +136,6 @@
             this.buttonPreviewData.UseVisualStyleBackColor = true;
             this.buttonPreviewData.Click += new System.EventHandler(this.buttonPreviewData_Click);
             // 
-            // buttonEditConnectionString
-            // 
-            this.buttonEditConnectionString.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonEditConnectionString.Location = new System.Drawing.Point(479, 96);
-            this.buttonEditConnectionString.Name = "buttonEditConnectionString";
-            this.buttonEditConnectionString.Size = new System.Drawing.Size(75, 23);
-            this.buttonEditConnectionString.TabIndex = 15;
-            this.buttonEditConnectionString.Text = "Edit";
-            this.buttonEditConnectionString.UseVisualStyleBackColor = true;
-            this.buttonEditConnectionString.Click += new System.EventHandler(this.buttonEditConnectionString_Click);
-            // 
             // buttonFilter
             // 
             this.buttonFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -163,13 +159,55 @@
             this.labelFilter.Text = "Filter: (none)";
             this.labelFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // btnEditCnn
+            // 
+            this.btnEditCnn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditCnn.ContextMenuStrip = this.cmsEdit;
+            this.btnEditCnn.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditCnn.ImageKey = "Normal";
+            this.btnEditCnn.Location = new System.Drawing.Point(480, 96);
+            this.btnEditCnn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnEditCnn.Name = "btnEditCnn";
+            this.btnEditCnn.Size = new System.Drawing.Size(74, 28);
+            this.btnEditCnn.TabIndex = 18;
+            this.btnEditCnn.Text = "Edit";
+            this.btnEditCnn.UseVisualStyleBackColor = true;
+            this.btnEditCnn.ButtonClick += new System.EventHandler(this.btnEditCnn_ButtonClick);
+            // 
+            // cmsEdit
+            // 
+            this.cmsEdit.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiEditNew,
+            this.tsmiEditOld});
+            this.cmsEdit.Name = "cmsEdit";
+            this.cmsEdit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.cmsEdit.ShowCheckMargin = true;
+            this.cmsEdit.ShowImageMargin = false;
+            this.cmsEdit.Size = new System.Drawing.Size(267, 48);
+            // 
+            // tsmiEditNew
+            // 
+            this.tsmiEditNew.Checked = true;
+            this.tsmiEditNew.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmiEditNew.Name = "tsmiEditNew";
+            this.tsmiEditNew.Size = new System.Drawing.Size(266, 22);
+            this.tsmiEditNew.Text = "Edit (.Net Framework for SQL Server)";
+            this.tsmiEditNew.Click += new System.EventHandler(this.tsmiEditNew_Click);
+            // 
+            // tsmiEditOld
+            // 
+            this.tsmiEditOld.Name = "tsmiEditOld";
+            this.tsmiEditOld.Size = new System.Drawing.Size(266, 22);
+            this.tsmiEditOld.Text = "Edit (OLE DB Connection)";
+            this.tsmiEditOld.Click += new System.EventHandler(this.tsmiEditOld_Click);
+            // 
             // Page10_SourceConnection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnEditCnn);
             this.Controls.Add(this.labelFilter);
             this.Controls.Add(this.buttonFilter);
-            this.Controls.Add(this.buttonEditConnectionString);
             this.Controls.Add(this.buttonPreviewData);
             this.Controls.Add(this.cbxSrcTableOrViewName);
             this.Controls.Add(this.rtbSrcConnStr);
@@ -178,6 +216,7 @@
             this.Controls.Add(this.rbIsCommandText);
             this.Controls.Add(this.rbIsTableOrView);
             this.Description = "Define the source of your data";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Page10_SourceConnection";
             this.Size = new System.Drawing.Size(588, 339);
             this.Title = "Source Connection";
@@ -188,10 +227,11 @@
             this.Controls.SetChildIndex(this.rtbSrcConnStr, 0);
             this.Controls.SetChildIndex(this.cbxSrcTableOrViewName, 0);
             this.Controls.SetChildIndex(this.buttonPreviewData, 0);
-            this.Controls.SetChildIndex(this.buttonEditConnectionString, 0);
             this.Controls.SetChildIndex(this.buttonFilter, 0);
             this.Controls.SetChildIndex(this.labelFilter, 0);
+            this.Controls.SetChildIndex(this.btnEditCnn, 0);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.cmsEdit.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,8 +246,11 @@
         public Components.ImageComboBox cbxSrcTableOrViewName;
         public System.Windows.Forms.RichTextBox rtbCommandText;
         public System.Windows.Forms.RadioButton rbIsCommandText;
-        private System.Windows.Forms.Button buttonEditConnectionString;
         private System.Windows.Forms.Button buttonFilter;
         private System.Windows.Forms.Label labelFilter;
+        private ExoticControls.SplitButton btnEditCnn;
+        private System.Windows.Forms.ContextMenuStrip cmsEdit;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEditOld;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEditNew;
     }
 }

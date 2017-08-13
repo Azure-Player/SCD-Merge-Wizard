@@ -126,6 +126,7 @@
             // pictureBoxDonate
             // 
             this.pictureBoxDonate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxDonate.Enabled = false;
             this.pictureBoxDonate.Image = global::ScdMergeWizard.Properties.Resources.dollar_icon;
             this.pictureBoxDonate.Location = new System.Drawing.Point(17, 119);
             this.pictureBoxDonate.Name = "pictureBoxDonate";

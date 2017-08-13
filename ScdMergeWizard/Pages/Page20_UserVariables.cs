@@ -6,7 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.OleDb;
+using System.Data.Common;
 using ScdMergeWizard.Database;
 using ScdMergeWizard.Formz;
 
@@ -105,13 +105,14 @@ namespace ScdMergeWizard.Pages
 
         private Exception testSQL()
         {
-            OleDbCommand cmd = GlobalVariables.SourceConnection.GetConn().CreateCommand();
+            DbCommand cmd = GlobalVariables.SourceConnection.GetConn().CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = getSQL(false);
 
             try
             {
-                cmd.ExecuteReader();
+                DbDataReader drd = cmd.ExecuteReader();
+                drd.Close();
             }
             catch (Exception ex)
             {
@@ -136,11 +137,11 @@ namespace ScdMergeWizard.Pages
                 return e;
             }
 
-            OleDbCommand cmd = GlobalVariables.SourceConnection.GetConn().CreateCommand();
+            DbCommand cmd = GlobalVariables.SourceConnection.GetConn().CreateCommand();
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = getSQL(true);
 
-            OleDbDataReader rdr = cmd.ExecuteReader();
+            DbDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
                 variableValues.Add(rdr[1].ToString());

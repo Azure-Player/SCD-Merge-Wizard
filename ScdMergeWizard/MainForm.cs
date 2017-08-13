@@ -170,6 +170,7 @@ namespace ScdMergeWizard
                 writer.WriteElementString("ShowExtendedComments", GlobalVariables.Options.ShowExtendedComments.ToString());
                 writer.WriteElementString("SCD2VersionNumberMode", GlobalVariables.Options.SCD2VersionNumberMode.ToString());
                 writer.WriteElementString("SCD13UpdateMode", GlobalVariables.Options.SCD13UpdateMode.ToString());
+                writer.WriteElementString("ComparisonMethod", GlobalVariables.Options.ComparisonMethod.ToString());
                 writer.WriteEndElement();
 
                 writer.WriteStartElement("ColumnMappings");
@@ -332,7 +333,7 @@ namespace ScdMergeWizard
                     sbLoadingErrors.AppendLine("Cannot read Target ConnectionString");
 
 
-                GlobalVariables.TargetConnection = new MyOleDbConnection(pageTargetConnection.rtbTgtConnStr.Text);
+                GlobalVariables.TargetConnection = DbHelper.CreateConnection(pageTargetConnection.rtbTgtConnStr.Text); //new MyOleDbConnection(pageTargetConnection.rtbTgtConnStr.Text);
                 pageTargetConnection.cbxTgtTableOrViewName.AddItems(DbHelper.GetTablesViewsAndSynonyms(GlobalVariables.TargetConnection));
 
 
@@ -417,6 +418,14 @@ namespace ScdMergeWizard
                 }
                 else
                     sbLoadingErrors.AppendLine("Cannot read SCD13UpdateMode");
+
+                node = doc.DocumentElement.SelectSingleNode("/ScdMergeWizard/Options/ComparisonMethod");
+                if (node != null)
+                {
+                    GlobalVariables.Options.ComparisonMethod = (EComparisonMethod)Enum.Parse(typeof(EComparisonMethod), node.InnerText);
+                }
+                else
+                    sbLoadingErrors.AppendLine("Cannot read ComparisonMethod");
 
                 // Column Mappings
                 node = doc.DocumentElement.SelectSingleNode("/ScdMergeWizard/ColumnMappings");
@@ -634,7 +643,7 @@ namespace ScdMergeWizard
 
         private void viewOnlineHelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start(@"https://scdmergewizard.codeplex.com/documentation");
+            System.Diagnostics.Process.Start(@"https://github.com/SQLPlayer/SCD-Merge-Wizard/wiki/");
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)

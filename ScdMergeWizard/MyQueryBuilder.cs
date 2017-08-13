@@ -34,7 +34,7 @@ namespace ScdMergeWizard
             // Add come comments at the beginning
             lines.Add(string.Format("Slowly Changing Dimension script by SCD Merge Wizard"));
             lines.Add(string.Format("Author: Miljan Radovic"));
-            lines.Add(string.Format("Official web site: https://scdmergewizard.codeplex.com/"));
+            lines.Add(string.Format("Official web site: https://github.com/SQLPlayer/SCD-Merge-Wizard/"));
             lines.Add(string.Format("Version: {0}", Assembly.GetEntryAssembly().GetName().Version));
             lines.Add(string.Format("Publish date: {0}", GlobalVariables.LinkerTimestamp));
             lines.Add(string.Format("Script creation date: {0}", DateTime.Now));
@@ -256,21 +256,36 @@ namespace ScdMergeWizard
             if (leftColumns.Length != rightColumns.Length)
                 return null;
 
-            for (int i = 0; i < leftColumns.Length; i++)
+            if (GlobalVariables.Options.ComparisonMethod == EComparisonMethod.StandardSQL)
             {
-                if (i > 0)
-                    s += (" " + separator);
-                if (i > 0 && i < leftColumns.Length)
-                    s += Environment.NewLine;
-                for (int k = 0; k < tabsCount; k++)
-                    s += "\t";
+                for (int i = 0; i < leftColumns.Length; i++)
+                {
+                    if (i > 0)
+                        s += (" " + separator);
+                    if (i > 0 && i < leftColumns.Length)
+                        s += Environment.NewLine;
+                    for (int k = 0; k < tabsCount; k++)
+                        s += "\t";
 
-                if (isNullCompare)
-                    s += string.Format("({0} <> {1} OR ({0} IS NULL AND {1} IS NOT NULL) OR ({0} IS NOT NULL AND {1} IS NULL))", leftColumns[i], rightColumns[i]);
-                else
-                    s += string.Format("{0} <> {1}", leftColumns[i], rightColumns[i]);
+                    if (isNullCompare)
+                        s += string.Format("({0} <> {1} OR ({0} IS NULL AND {1} IS NOT NULL) OR ({0} IS NOT NULL AND {1} IS NULL))", leftColumns[i], rightColumns[i]);
+                    else
+                        s += string.Format("{0} <> {1}", leftColumns[i], rightColumns[i]);
+                }
             }
-
+            else
+            {
+                string LeftFields = "";
+                string RightFields = "";
+                for (int i = 0; i < leftColumns.Length; i++)
+                {
+                    LeftFields += string.Format("{0} as Col{1:X}, ", leftColumns[i], i);
+                    RightFields += string.Format("{0} as Col{1:X}, ", rightColumns[i], i);
+                }
+                LeftFields = LeftFields.Substring(0, LeftFields.Length - 2);
+                RightFields = RightFields.Substring(0, RightFields.Length - 2);
+                s += string.Format("\tHASHBYTES('MD5', (SELECT {0} FOR xml raw)){2}\t<> HASHBYTES('MD5', (SELECT {1} FOR xml raw))", LeftFields, RightFields, Environment.NewLine);                
+            }
             return s;
         }
 

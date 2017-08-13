@@ -2,32 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Data;
 using System.Data.Common;
 using System.Configuration;
 using System.ComponentModel;
-using ScdMergeWizard.BckGrndWorker;
 using ScdMergeWizard.ExcHandling;
 
 namespace ScdMergeWizard.Database
 {
-    public class MyOleDbConnection : MyBaseDbConnection
+    public class MyAdoDbConnection : MyBaseDbConnection
     {
-        public MyOleDbConnection(string connectionString) : base(connectionString) { }
-        public MyOleDbConnection(OleDbConnection cnn) : base(cnn) { }
+        public MyAdoDbConnection(string connectionString) : base(connectionString) { }
+        public MyAdoDbConnection(SqlConnection cnn) : base(cnn) { }
 
         public override DbConnection GetConn()
         {
             try
             {
                 if (_conn == null && !string.IsNullOrEmpty(_connectionString))
-                    _conn = new OleDbConnection(_connectionString);
+                    _conn = new SqlConnection(_connectionString);
 
                 if (_conn != null && _conn.State != ConnectionState.Open)
                     _conn.Open();
 
-                return _conn as OleDbConnection;
+                return _conn as SqlConnection;
             }
             catch (Exception ex)
             {
@@ -43,12 +42,12 @@ namespace ScdMergeWizard.Database
 
         public override DbDataAdapter CreateAdapter(string sql)
         {
-            return new OleDbDataAdapter(sql, GetConn() as OleDbConnection);
+            return new SqlDataAdapter(sql, GetConn() as SqlConnection);
         }
 
         public override DbCommandBuilder CreateCommandBuilder(DbDataAdapter adp)
         {
-            return new OleDbCommandBuilder(adp as OleDbDataAdapter);
+            return new SqlCommandBuilder(adp as SqlDataAdapter);
         }
 
     }

@@ -129,7 +129,7 @@ namespace ScdMergeWizard.ExcHandling
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Clipboard.SetText(_fullErrorDesc);
-            System.Diagnostics.Process.Start(@"https://scdmergewizard.codeplex.com/workitem/list/basic");
+            System.Diagnostics.Process.Start(@"https://github.com/SQLPlayer/SCD-Merge-Wizard/issues");
 
             this.Close();
         }
@@ -143,7 +143,7 @@ namespace ScdMergeWizard.ExcHandling
         {
             try
             {
-                string to = "knyazs@hotmail.com";
+                string to = "kamil@nowinski.net";
                 string subject = "Exception Occured at " + Assembly.GetExecutingAssembly().GetName().Name;
                 string command = string.Format("mailto:{0}?subject={1}&body={2}", to, subject, _fullErrorDesc.Replace(Environment.NewLine, "%0D"));
                 Process.Start(command);

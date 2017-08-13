@@ -13,6 +13,7 @@ namespace ScdMergeWizard
         private bool _ignoreDatabasePrefix = true;
         private bool _showExtendedComments = false;
         private ESCD13UpdateMode _scd13UpdateMode;
+        private EComparisonMethod _comparisonMethod;
 
         [CategoryAttribute("Global Settings")
         , DisplayName("Records on Target not found on Source")
@@ -71,7 +72,17 @@ namespace ScdMergeWizard
             set { _scd13UpdateMode = value; }
         }
 
-        
+
+        [CategoryAttribute("Global Settings")
+        , DisplayName("Comparison Method")
+        , DefaultValue(EComparisonMethod.StandardSQL)
+        , Description("The way to detect the changes between source and target database. Bear in mind that HASHBYTES method will create shorter and cleaner code, but it will slower.")
+        ]
+        public EComparisonMethod ComparisonMethod
+        {
+            get { return _comparisonMethod; }
+            set { _comparisonMethod = value; }
+        }
 
     }
 
@@ -92,5 +103,10 @@ namespace ScdMergeWizard
     {
         UpdateCurrentRecordsOnly,
         UpdateCurrentAndOutdatedRecords
+    }
+    public enum EComparisonMethod
+    {
+        StandardSQL,
+        HASHBYTES_MD5
     }
 }

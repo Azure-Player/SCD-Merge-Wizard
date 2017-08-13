@@ -68,6 +68,7 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -119,6 +120,14 @@
     <Compile Include="Components\TransformationGridView.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Database\MyBaseDbConnection.cs" />
+    <Compile Include="Database\MyAdoDbConnection.cs" />
+    <Compile Include="EditMenu\SplitButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EditMenu\SplitButton.designer.cs">
+      <DependentUpon>SplitButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExcHandling\ExceptionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +135,12 @@
       <DependentUpon>ExceptionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ExcHandling\MyExceptionHandler.cs" />
+    <Compile Include="Formz\ConnectDbForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formz\ConnectDbForm.Designer.cs">
+      <DependentUpon>ConnectDbForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formz\DataPreviewForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -275,8 +290,14 @@
     <EmbeddedResource Include="Components\TransformationGridView.resx">
       <DependentUpon>TransformationGridView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditMenu\SplitButton.resx">
+      <DependentUpon>SplitButton.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExcHandling\ExceptionForm.resx">
       <DependentUpon>ExceptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formz\ConnectDbForm.resx">
+      <DependentUpon>ConnectDbForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formz\DataPreviewForm.resx">
       <DependentUpon>DataPreviewForm.cs</DependentUpon>
@@ -429,6 +450,8 @@
     <None Include="Resources\synonym.png" />
     <None Include="Resources\Filter2HS.png" />
     <None Include="Resources\Event16x16.png" />
+    <None Include="Resources\database_edit.png" />
+    <None Include="Resources\1451965532_033.png" />
     <Content Include="ScdMergeSql.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.OleDb;
+using System.Data.Common;
 
 namespace ScdMergeWizard.Formz
 {
@@ -43,11 +43,11 @@ namespace ScdMergeWizard.Formz
             {
                 dataGridView1.Rows.Clear();
 
-                OleDbCommand cmd = GlobalVariables.SourceConnection.GetConn().CreateCommand();
+                DbCommand cmd = GlobalVariables.SourceConnection.GetConn().CreateCommand();
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = _sqlToExec;
 
-                OleDbDataReader rdr = cmd.ExecuteReader();
+                DbDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
                     string s = rdr[1].ToString();
