@@ -56,7 +56,7 @@ namespace ScdMergeWizard.Formz
                 case EUrlType.FACEBOOK: url = @"https://www.facebook.com/ScdMergeWizard"; break;
                 case EUrlType.LINKEDIN: url = @"http://www.linkedin.com"; break;
                 case EUrlType.REVIEW: url = @"https://github.com/SQLPlayer/SCD-Merge-Wizard/"; break;
-                case EUrlType.TWEET: url = @"https://www.twitter.com/share?url=https%3A%2F%2Fbiy.ly%2FSCDMrgWiz&text=Check out this great application for generating Slowly Changing Dimension MERGE statement: "; break;
+                case EUrlType.TWEET: url = @"https://www.twitter.com/share?url=https%3A%2F%2Fbiy.ly%2FSCDMrgWiz&text=%23SCDMergeWizard Check out this great application for generating Slowly Changing Dimension MERGE statement: "; break;
             };
 
             if(!string.IsNullOrEmpty(url))
