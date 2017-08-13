@@ -1,0 +1,464 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{21436B38-9D74-4841-A1B7-4C588D61B5E6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ScdMergeWizard</RootNamespace>
+    <AssemblyName>ScdMergeWizard</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ScdMergeSql.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>ScdMergeWizard.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutBox1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBox1.Designer.cs">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BckGrndWorker\BckGrndForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BckGrndWorker\BckGrndForm.Designer.cs">
+      <DependentUpon>BckGrndForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColumnMapping.cs" />
+    <Compile Include="Components\ImageComboBoxItem.cs" />
+    <Compile Include="Components\ImageComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\MyRichTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\MyRichTextBox.Designer.cs">
+      <DependentUpon>MyRichTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\MySystemFieldsDataGridView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\MySystemFieldsDataGridView.Designer.cs">
+      <DependentUpon>MySystemFieldsDataGridView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\MyTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\MyTabPage.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\TransformationGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExcHandling\ExceptionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExcHandling\ExceptionForm.Designer.cs">
+      <DependentUpon>ExceptionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ExcHandling\MyExceptionHandler.cs" />
+    <Compile Include="Formz\DataPreviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formz\DataPreviewForm.Designer.cs">
+      <DependentUpon>DataPreviewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formz\DatabaseObjectFilterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formz\DatabaseObjectFilterForm.Designer.cs">
+      <DependentUpon>DatabaseObjectFilterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formz\ExitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formz\ExitForm.Designer.cs">
+      <DependentUpon>ExitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formz\TransformationHelpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formz\TransformationHelpForm.Designer.cs">
+      <DependentUpon>TransformationHelpForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formz\TransformationStatsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formz\TransformationStatsForm.Designer.cs">
+      <DependentUpon>TransformationStatsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formz\UserVariablesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formz\UserVariablesForm.Designer.cs">
+      <DependentUpon>UserVariablesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BckGrndWorker\MyBackgroundWorker.cs" />
+    <Compile Include="MyQueryBuilder.cs" />
+    <Compile Include="MyTransformation.cs" />
+    <Compile Include="Database\DbHelper.cs" />
+    <Compile Include="Database\MyOleDbConnection.cs" />
+    <Compile Include="Database\MyDbColumn.cs" />
+    <Compile Include="Database\MyDbObject.cs" />
+    <Compile Include="EditMenu\EditMenuManager.cs" />
+    <Compile Include="EditMenu\Win32API.cs" />
+    <Compile Include="GlobalVariables.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyUserVariable.cs" />
+    <Compile Include="Options.cs" />
+    <Compile Include="Pages\Page02_Agreement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Page02_Agreement.Designer.cs">
+      <DependentUpon>Page02_Agreement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Page30_Transformations.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Page30_Transformations.Designer.cs">
+      <DependentUpon>Page30_Transformations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\IMasterPage.cs" />
+    <Compile Include="Pages\Page40_CheckSourceDataBusinessKeys.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Page40_CheckSourceDataBusinessKeys.Designer.cs">
+      <DependentUpon>Page40_CheckSourceDataBusinessKeys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Page50_Options.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Page50_Options.Designer.cs">
+      <DependentUpon>Page50_Options.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Page80_Audit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Page80_Audit.Designer.cs">
+      <DependentUpon>Page80_Audit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Page99_Query.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Page99_Query.Designer.cs">
+      <DependentUpon>Page99_Query.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Page10_SourceConnection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Page10_SourceConnection.Designer.cs">
+      <DependentUpon>Page10_SourceConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Page20_UserVariables.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Page20_UserVariables.Designer.cs">
+      <DependentUpon>Page20_UserVariables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Page11_TargetConnection.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Page11_TargetConnection.Designer.cs">
+      <DependentUpon>Page11_TargetConnection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TheMasterPage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\TheMasterPage.Designer.cs">
+      <DependentUpon>TheMasterPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ThePageNavigator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\ThePageNavigator.Designer.cs">
+      <DependentUpon>ThePageNavigator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Page01_Welcome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Pages\Page01_Welcome.Designer.cs">
+      <DependentUpon>Page01_Welcome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Recent\RecentFile.cs" />
+    <Compile Include="Recent\RecentFilesManager.cs" />
+    <EmbeddedResource Include="AboutBox1.resx">
+      <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BckGrndWorker\BckGrndForm.resx">
+      <DependentUpon>BckGrndForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\MyRichTextBox.resx">
+      <DependentUpon>MyRichTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\MySystemFieldsDataGridView.resx">
+      <DependentUpon>MySystemFieldsDataGridView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\MyTabPage.resx">
+      <DependentUpon>MyTabPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\TransformationGridView.resx">
+      <DependentUpon>TransformationGridView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExcHandling\ExceptionForm.resx">
+      <DependentUpon>ExceptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formz\DataPreviewForm.resx">
+      <DependentUpon>DataPreviewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formz\DatabaseObjectFilterForm.resx">
+      <DependentUpon>DatabaseObjectFilterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formz\ExitForm.resx">
+      <DependentUpon>ExitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formz\TransformationHelpForm.resx">
+      <DependentUpon>TransformationHelpForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formz\TransformationStatsForm.resx">
+      <DependentUpon>TransformationStatsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formz\UserVariablesForm.resx">
+      <DependentUpon>UserVariablesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Page02_Agreement.resx">
+      <DependentUpon>Page02_Agreement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Page30_Transformations.resx">
+      <DependentUpon>Page30_Transformations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Page40_CheckSourceDataBusinessKeys.resx">
+      <DependentUpon>Page40_CheckSourceDataBusinessKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Page50_Options.resx">
+      <DependentUpon>Page50_Options.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Page80_Audit.resx">
+      <DependentUpon>Page80_Audit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Page99_Query.resx">
+      <DependentUpon>Page99_Query.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Page10_SourceConnection.resx">
+      <DependentUpon>Page10_SourceConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Page20_UserVariables.resx">
+      <DependentUpon>Page20_UserVariables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Page11_TargetConnection.resx">
+      <DependentUpon>Page11_TargetConnection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\TheMasterPage.resx">
+      <DependentUpon>TheMasterPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\ThePageNavigator.resx">
+      <DependentUpon>ThePageNavigator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Page01_Welcome.resx">
+      <DependentUpon>Page01_Welcome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="ScdMergeWizard.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\view.png" />
+    <None Include="Resources\TableHS.png" />
+    <None Include="Resources\Edit_UndoHS.png" />
+    <None Include="Resources\Edit_RedoHS.png" />
+    <None Include="Resources\CutHS.png" />
+    <None Include="Resources\CopyHS.png" />
+    <None Include="Resources\PasteHS.png" />
+    <None Include="Resources\Properties.png" />
+    <None Include="Resources\109_AllAnnotations_Warning_16x16_72.png" />
+    <None Include="Resources\109_AllAnnotations_Help_16x16_72.png" />
+    <None Include="Resources\109_AllAnnotations_Info_16x16_72.png" />
+    <None Include="Resources\109_AllAnnotations_Error_64x64_72.png" />
+    <None Include="Resources\arrow_skip.png" />
+    <None Include="Resources\exclamation_red.png" />
+    <None Include="Resources\key.png" />
+    <None Include="Resources\date_next.png" />
+    <None Include="Resources\date_previous.png" />
+    <None Include="Resources\date_edit.png" />
+    <None Include="Resources\date_delete.png" />
+    <None Include="Resources\date_add.png" />
+    <None Include="Resources\the_delete_icon.png" />
+    <None Include="Resources\Numbers-0-icon.png" />
+    <None Include="Resources\Numbers-6-icon.png" />
+    <None Include="Resources\Numbers-4-icon.png" />
+    <None Include="Resources\Numbers-3-icon.png" />
+    <None Include="Resources\Numbers-2-icon.png" />
+    <None Include="Resources\Numbers-1-icon.png" />
+    <None Include="Resources\old_versions.png" />
+    <None Include="Resources\SQL.png" />
+    <None Include="Resources\saveHS.png" />
+    <None Include="Resources\Exit_32x32.png" />
+    <None Include="Resources\history.png" />
+    <None Include="Resources\Save_32x32.png" />
+    <None Include="Resources\SaveAllHS.png" />
+    <None Include="Resources\OpenFile.png" />
+    <None Include="Resources\OpenFileHS.bmp" />
+    <None Include="Resources\setting.png" />
+    <None Include="Resources\Debug-Variable-icon.png" />
+    <None Include="Resources\sql_query.jpg" />
+    <None Include="Resources\database-arrow-right-icon.png" />
+    <None Include="Resources\database-arrow-left-icon.png" />
+    <None Include="Resources\base_checkmark_32.png" />
+    <None Include="Resources\Delete_black_32x32.png" />
+    <None Include="Resources\dollar-icon.png" />
+    <None Include="Resources\social-facebook-box-blue-icon.png" />
+    <None Include="Resources\system-star-icon.png" />
+    <None Include="Resources\linkedin-icon.png" />
+    <None Include="Resources\578102_382911555092758_377212539_n.jpg" />
+    <None Include="Resources\DeleteHS.png" />
+    <None Include="Resources\database-check-icon.png" />
+    <None Include="Resources\check.png" />
+    <None Include="Resources\synonym.png" />
+    <None Include="Resources\Filter2HS.png" />
+    <None Include="Resources\Event16x16.png" />
+    <Content Include="ScdMergeSql.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="ADODB">
+      <Guid>{B691E011-1797-432E-907A-4D8C69339129}</Guid>
+      <VersionMajor>6</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </COMReference>
+    <COMReference Include="MSDASC">
+      <Guid>{2206CEB0-19C1-11D1-89E0-00C04FD7A829}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <Private>True</Private>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
