@@ -25,13 +25,13 @@ namespace ScdMergeWizard.Pages
 
         public void OnPageEntering()
         {
-
+            RefreshCnnButtonLogic();
         }
 
         public PageLeavingEventArgs OnPageLeaving(PageLeavingEventArgs e)
         {
             if(GlobalVariables.TargetConnection == null)
-                GlobalVariables.TargetConnection = DbHelper.CreateConnection(rtbTgtConnStr.Text); //new Database.MyOleDbConnection(rtbTgtConnStr.Text);
+                GlobalVariables.TargetConnection = DbHelper.CreateConnection(rtbTgtConnStr.Text);
 
             if (GlobalVariables.TargetConnection == null)
             {
@@ -67,14 +67,14 @@ namespace ScdMergeWizard.Pages
 
         private void rtbTgtConnStr_Leave(object sender, EventArgs e)
         {
-            GlobalVariables.TargetConnection = DbHelper.CreateConnection(rtbTgtConnStr.Text); //new Database.MyOleDbConnection(rtbTgtConnStr.Text);
+            GlobalVariables.TargetConnection = DbHelper.CreateConnection(rtbTgtConnStr.Text);
         }
 
         private void rtbTgtConnStr_TextChanged(object sender, EventArgs e)
         {
             GlobalVariables.IsProjectModified = true;
-            if (GlobalVariables.SourceConnection != null && GlobalVariables.SourceConnection.IsConnectionOpened())
-                GlobalVariables.SourceConnection.GetConn().Close();
+            if (GlobalVariables.TargetConnection != null && GlobalVariables.TargetConnection.IsConnectionOpened())
+                GlobalVariables.TargetConnection.GetConn().Close();
         }
 
         private void myComboBox1_TextChanged(object sender, EventArgs e)
@@ -86,7 +86,7 @@ namespace ScdMergeWizard.Pages
         private void myComboBox1_DropDown(object sender, EventArgs e)
         {
             if (GlobalVariables.TargetConnection == null)
-                GlobalVariables.TargetConnection = DbHelper.CreateConnection(rtbTgtConnStr.Text); //new Database.MyOleDbConnection(rtbTgtConnStr.Text);
+                GlobalVariables.TargetConnection = DbHelper.CreateConnection(rtbTgtConnStr.Text);
 
             cbxTgtTableOrViewName.AddItems(DbHelper.GetTablesViewsAndSynonyms(GlobalVariables.TargetConnection));
         }
@@ -96,7 +96,7 @@ namespace ScdMergeWizard.Pages
             string commandText;
 
             if (GlobalVariables.TargetConnection == null)
-                GlobalVariables.TargetConnection = DbHelper.CreateConnection(rtbTgtConnStr.Text); //new Database.MyOleDbConnection(rtbTgtConnStr.Text);
+                GlobalVariables.TargetConnection = DbHelper.CreateConnection(rtbTgtConnStr.Text);
 
             commandText = "SELECT * FROM " + cbxTgtTableOrViewName.Text;
 
@@ -176,9 +176,17 @@ namespace ScdMergeWizard.Pages
 
         private void lilCopyFromSource_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            rtbTgtConnStr.Text = String.Empty;
             rtbTgtConnStr.Text = GlobalVariables.SourceConnection.GetConnectionString();
+            GlobalVariables.TargetConnection = GlobalVariables.SourceConnection.Clone();
+            RefreshCnnButtonLogic();
         }
 
-        
+        private void RefreshCnnButtonLogic()
+        {
+            tsmiEditNew.Checked = GlobalVariables.TargetConnection is MyAdoDbConnection;
+            tsmiEditOld.Checked = GlobalVariables.TargetConnection is MyOleDbConnection;
+        }
+
     }
 }

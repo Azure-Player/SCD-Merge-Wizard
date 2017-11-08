@@ -25,12 +25,14 @@ namespace ScdMergeWizard.Pages
         }
 
         public void OnPageEntering()
-        { }
+        {
+            RefreshCnnButtonLogic();
+        }
 
         public PageLeavingEventArgs OnPageLeaving(PageLeavingEventArgs e)
         {
             if (GlobalVariables.SourceConnection == null)
-                GlobalVariables.SourceConnection = DbHelper.CreateConnection(rtbSrcConnStr.Text);  //new Database.MyAdoDbConnection(rtbSrcConnStr.Text);
+                GlobalVariables.SourceConnection = DbHelper.CreateConnection(rtbSrcConnStr.Text);
 
             if (GlobalVariables.SourceConnection == null)
             {
@@ -107,14 +109,14 @@ namespace ScdMergeWizard.Pages
         private void cbxSrcTables_DropDown(object sender, EventArgs e)
         {
             if (GlobalVariables.SourceConnection == null)
-                GlobalVariables.SourceConnection = DbHelper.CreateConnection(rtbSrcConnStr.Text); //new Database.MyOleDbConnection(rtbSrcConnStr.Text);
+                GlobalVariables.SourceConnection = DbHelper.CreateConnection(rtbSrcConnStr.Text);
 
             cbxSrcTableOrViewName.AddItems(DbHelper.GetTablesViewsAndSynonyms(GlobalVariables.SourceConnection));
         }
 
         private void rtbSrcConnStr_Leave(object sender, EventArgs e)
         {
-            GlobalVariables.SourceConnection = DbHelper.CreateConnection(rtbSrcConnStr.Text); //new Database.MyOleDbConnection(rtbSrcConnStr.Text);
+            GlobalVariables.SourceConnection = DbHelper.CreateConnection(rtbSrcConnStr.Text);
         }
 
         private void buttonPreviewData_Click(object sender, EventArgs e)
@@ -122,7 +124,7 @@ namespace ScdMergeWizard.Pages
             string commandText;
 
             if (GlobalVariables.SourceConnection == null)
-                GlobalVariables.SourceConnection = DbHelper.CreateConnection(rtbSrcConnStr.Text); //new Database.MyOleDbConnection(rtbSrcConnStr.Text);
+                GlobalVariables.SourceConnection = DbHelper.CreateConnection(rtbSrcConnStr.Text);
 
             if (rbIsTableOrView.Checked)
                     commandText = "SELECT * FROM " + cbxSrcTableOrViewName.Text;
@@ -205,6 +207,12 @@ namespace ScdMergeWizard.Pages
             {
                 buttonEditNewConnectionString_Click(sender, e);
             }
+        }
+
+        private void RefreshCnnButtonLogic()
+        {
+            tsmiEditNew.Checked = GlobalVariables.SourceConnection is MyAdoDbConnection;
+            tsmiEditOld.Checked = GlobalVariables.SourceConnection is MyOleDbConnection;
         }
 
     }

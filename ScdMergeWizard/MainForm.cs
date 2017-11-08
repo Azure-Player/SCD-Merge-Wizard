@@ -300,7 +300,7 @@ namespace ScdMergeWizard
 
                 if (pageSourceConnection.rbIsTableOrView.Checked)
                 {
-                    GlobalVariables.SourceConnection = new MyOleDbConnection(pageSourceConnection.rtbSrcConnStr.Text);
+                    GlobalVariables.SourceConnection = DbHelper.CreateConnection(pageSourceConnection.rtbSrcConnStr.Text);
                     pageSourceConnection.cbxSrcTableOrViewName.AddItems(DbHelper.GetTablesViewsAndSynonyms(GlobalVariables.SourceConnection));
                 }
 
@@ -333,7 +333,7 @@ namespace ScdMergeWizard
                     sbLoadingErrors.AppendLine("Cannot read Target ConnectionString");
 
 
-                GlobalVariables.TargetConnection = DbHelper.CreateConnection(pageTargetConnection.rtbTgtConnStr.Text); //new MyOleDbConnection(pageTargetConnection.rtbTgtConnStr.Text);
+                GlobalVariables.TargetConnection = DbHelper.CreateConnection(pageTargetConnection.rtbTgtConnStr.Text);
                 pageTargetConnection.cbxTgtTableOrViewName.AddItems(DbHelper.GetTablesViewsAndSynonyms(GlobalVariables.TargetConnection));
 
 

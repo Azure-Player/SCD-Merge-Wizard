@@ -52,6 +52,11 @@ namespace ScdMergeWizard.Database
             return false;
         }
 
+        public MyBaseDbConnection Clone()
+        {
+            return DbHelper.CreateConnection(_connectionString);
+        }
+
         public string GetConnectionString()
         {
             return _connectionString;

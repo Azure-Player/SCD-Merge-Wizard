@@ -117,10 +117,22 @@ namespace ScdMergeWizard.Database
             return string.IsNullOrEmpty(res) ? null : res;
         }
 
+        //public static MyBaseDbConnection CreateConnection(string connectionString)
+        //{
+        //    return new Database.MyAdoDbConnection(connectionString);
+        //}
         public static MyBaseDbConnection CreateConnection(string connectionString)
         {
-            return new Database.MyAdoDbConnection(connectionString);
+            if (!connectionString.ToLower().StartsWith("provider="))
+            {
+                return new MyAdoDbConnection(connectionString);
+            }
+            else
+            {
+                return new MyOleDbConnection(connectionString);
+            }
         }
+
 
     }
 }
