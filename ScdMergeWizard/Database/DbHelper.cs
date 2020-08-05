@@ -39,6 +39,8 @@ namespace ScdMergeWizard.Database
 
                 //_objects.Add(new MyDbObject { Name = "Test", Type = EDbObjectType.View });
 
+                _objects.Sort();
+
                 return _objects.ToArray();
             }
             catch
