@@ -25,11 +25,7 @@ If so, click here:
 
 # Release Notes
 
-All notable changes to this project will be documented in this file.
-
-## [4.3.0] - 2020-08-06
-* Added space before OR/AND in a condition statement (#9)
-* Change: List of tables is sorted now (#2)
+All notable changes to this project will be documented in [this file](Release-Notes.md).
 
 # History
 The project has been migrated from [CodePlex](https://scdmergewizard.codeplex.com/)
