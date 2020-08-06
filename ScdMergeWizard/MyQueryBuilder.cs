@@ -233,7 +233,7 @@ namespace ScdMergeWizard
             for (int i = 0; i < leftColumns.Length; i++)
             {
                 if (i > 0)
-                    s += separator;
+                    s += (" " + separator);
                 if (i > 0 && i < leftColumns.Length)
                     s += Environment.NewLine;
                 for (int k = 0; k < tabsCount; k++)
@@ -375,7 +375,7 @@ namespace ScdMergeWizard
 
                 leftColumns = GlobalVariables.ColumnMappings.Where(cm => cm.TransformationCode == ETransformationCode.BUSINESS_KEY).Select(sc => "[source]." + sc.SourceColumn).ToArray();
                 rightColumns = GlobalVariables.ColumnMappings.Where(cm => cm.TransformationCode == ETransformationCode.BUSINESS_KEY).Select(sc => "[target]." + sc.TargetColumn).ToArray();
-                query.AppendLine(makeColumnEqualator(leftColumns, rightColumns, " AND", false, 1));
+                query.AppendLine(makeColumnEqualator(leftColumns, rightColumns, "AND", false, 1));
 
                 query.AppendLine(string.Format(")"));
 
@@ -391,7 +391,7 @@ namespace ScdMergeWizard
                     if (leftColumns.Length > 0)
                     {
                         query.Append(string.Format("AND{0}({0}", Environment.NewLine));
-                        query.Append(makeColumnEqualator(leftColumns, rightColumns, " AND", true, 1));
+                        query.Append(makeColumnEqualator(leftColumns, rightColumns, "AND", true, 1));
                         query.Append(string.Format("{0}){0}", Environment.NewLine));
                     }
                 }
@@ -414,7 +414,7 @@ namespace ScdMergeWizard
                     if (leftColumns.Length > 0)
                     {
                         query.Append(string.Format("AND{0}({0}", Environment.NewLine));
-                        query.Append(makeColumnEqualator(leftColumns, rightColumns, " AND", true, 1));
+                        query.Append(makeColumnEqualator(leftColumns, rightColumns, "AND", true, 1));
                         query.Append(string.Format("{0}){0}", Environment.NewLine));
                     }
                 }
@@ -463,7 +463,7 @@ namespace ScdMergeWizard
                         leftColumns = tmpMappings.Select(c => c.TargetColumn).ToArray();
                         rightColumns = tmpMappings.Select(c => c.GetSourceColumn(EOperation.INSERT, true, ECalledFrom.DEFAULT)).ToArray();
                         if (leftColumns.Length > 0)
-                            query.AppendLine(makeColumnEqualator(leftColumns, rightColumns, " AND", true, 1));
+                            query.AppendLine(makeColumnEqualator(leftColumns, rightColumns, "AND", true, 1));
 
                         query.AppendLine(string.Format("{0}THEN UPDATE{0}SET{0}", Environment.NewLine));
 
@@ -531,7 +531,7 @@ namespace ScdMergeWizard
                 query.Append(string.Format("\tON{0}\t({0}", Environment.NewLine));
                 leftColumns = GlobalVariables.ColumnMappings.Where(cm => cm.TransformationCode == ETransformationCode.BUSINESS_KEY).Select(sc => "[source]." + sc.SourceColumn).ToArray();
                 rightColumns = GlobalVariables.ColumnMappings.Where(cm => cm.TransformationCode == ETransformationCode.BUSINESS_KEY).Select(sc => "[target]." + sc.TargetColumn).ToArray();
-                query.AppendLine(makeColumnEqualator(leftColumns, rightColumns, " AND", false, 2));
+                query.AppendLine(makeColumnEqualator(leftColumns, rightColumns, "AND", false, 2));
                 query.Append(string.Format("\t){0}{0}", Environment.NewLine));
 
                 //WHEN NOT MATCHED
@@ -564,7 +564,7 @@ namespace ScdMergeWizard
                     leftColumns = tmpMappings.Select(c => c.TargetColumn).ToArray();
                     rightColumns = tmpMappings.Select(c => c.GetSourceColumn(EOperation.INSERT, true, ECalledFrom.DEFAULT)).ToArray();
                     if (leftColumns.Length > 0)
-                        query.AppendLine(makeColumnEqualator(leftColumns, rightColumns, " AND", true, 1));
+                        query.AppendLine(makeColumnEqualator(leftColumns, rightColumns, "AND", true, 1));
 
                     query.AppendLine(string.Format("{0}THEN UPDATE{0}SET{0}", Environment.NewLine));
 
@@ -591,7 +591,7 @@ namespace ScdMergeWizard
                 if (leftColumns.Length > 0)
                 {
                     query.Append(string.Format("AND{0}({0}", Environment.NewLine));
-                    query.Append(makeColumnEqualator(leftColumns, rightColumns, " AND", true, 1));
+                    query.Append(makeColumnEqualator(leftColumns, rightColumns, "AND", true, 1));
                     query.Append(string.Format("{0}){0}", Environment.NewLine));
                 }
 
