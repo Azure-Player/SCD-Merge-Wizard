@@ -14,7 +14,7 @@
     <ROW Property="ProductCode" Value="1033:{98D0F63D-3845-467A-9202-16BD7F50339D} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="SCD Merge Wizard"/>
-    <ROW Property="ProductVersion" Value="4.3.0" Type="32"/>
+    <ROW Property="ProductVersion" Value="4.3.0.0" Type="32" TargetFile="ScdMergeWizard.exe"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
     <ROW Property="UpgradeCode" Value="{E3F57F6C-5E3C-43D5-9C26-9CDB56362CFE}"/>
@@ -56,7 +56,7 @@
     <ROW Action="AI_DetectSoftware" Sequence="101"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
-    <ROW BuildKey="x86_Release" BuildName="x86_Release" BuildOrder="1" BuildType="0" PackageFolder="x86_ReleaseSetupFiles" PackageFileName="SCD Merge Wizard 4.2.1 Setup" Languages="en" InstallationType="4" UseLargeSchema="true"/>
+    <ROW BuildKey="x86_Release" BuildName="x86_Release" BuildOrder="1" BuildType="0" PackageFolder="x86_ReleaseSetupFiles" PackageFileName="SCD Merge Wizard [|ProductVersion] Setup" Languages="en" InstallationType="4" UseLargeSchema="true"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
     <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
