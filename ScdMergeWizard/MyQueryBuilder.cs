@@ -233,7 +233,7 @@ namespace ScdMergeWizard
             for (int i = 0; i < leftColumns.Length; i++)
             {
                 if (i > 0)
-                    s += separator;
+                    s += (" " + separator);
                 if (i > 0 && i < leftColumns.Length)
                     s += Environment.NewLine;
                 for (int k = 0; k < tabsCount; k++)
