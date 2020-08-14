@@ -14,6 +14,11 @@ If so, click here:
 
 [![Donate](https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=HM3GZ2N9DVJSG&source=url)
 
+### Donations collected to date:
+Total value: **$50 out of $203**  
+Progress: **24.6%**  
+Updated: **14/08/2020**  
+
 ## Screenshots
 
 ![Welcome](https://sqlplayer.net/wp-content/uploads/2018/01/SCD-Merge-Wizard-MainWindow.png)
