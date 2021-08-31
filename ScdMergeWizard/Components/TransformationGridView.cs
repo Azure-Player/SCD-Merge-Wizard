@@ -635,8 +635,8 @@ namespace ScdMergeWizard.Components
 
                     if ((trf.Code == ETransformationCode.SCD2_DATE_TO || trf.Code == ETransformationCode.SCD2_IS_ACTIVE || trf.Code == ETransformationCode.IS_DELETED)
                          && !string.IsNullOrEmpty(customInsertValue) && !string.IsNullOrEmpty(customUpdateValue)
-                         && GlobalVariables.UserColumnsDefinitions.Find(uc => uc.ColumnName.Equals(customInsertValue)).Value != null
-                         && GlobalVariables.UserColumnsDefinitions.Find(uc => uc.ColumnName.Equals(customUpdateValue)).Value != null
+                         && GlobalVariables.UserColumnsDefinitions.Find(uc => uc.ColumnName.Equals(customInsertValue)) != null
+                         && GlobalVariables.UserColumnsDefinitions.Find(uc => uc.ColumnName.Equals(customUpdateValue)) != null
                          && GlobalVariables.UserColumnsDefinitions.Find(uc => uc.ColumnName.Equals(customInsertValue)).Value.Equals(GlobalVariables.UserColumnsDefinitions.Find(uc => uc.ColumnName.Equals(customUpdateValue)).Value)
                         )
                     {
