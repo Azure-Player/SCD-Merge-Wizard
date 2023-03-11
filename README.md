@@ -7,7 +7,7 @@ There is [Wiki Documentation](/wiki/) about this application.
 
 ## Donate (if you wish)
 
-I would like to sign off MSI instalation file with [Software Publisher Certificate](https://github.com/SQLPlayer/SCD-Merge-Wizard/issues/12).
+I would like to sign off MSI instalation file with [Software Publisher Certificate](https://github.com/Azure-Player/SCD-Merge-Wizard/issues/12).
 But certificate is not cheap.  
 Would you like to contribute and help to achieve this goal?  
 If so, click here:  
@@ -21,10 +21,10 @@ Updated: **01/09/2020**
 
 ## Screenshots
 
-![Welcome](https://sqlplayer.net/wp-content/uploads/2018/01/SCD-Merge-Wizard-MainWindow.png)
-![Transformations](https://sqlplayer.net/wp-content/uploads/2018/01/SCD-Merge-Wizard-Transformations-Type1-Type2.png)
-![Transformations](https://sqlplayer.net/wp-content/uploads/2018/01/SCD-Merge-Wizard-Transformations0.png)
-![Output query](https://sqlplayer.net/wp-content/uploads/2018/01/SCD-Merge-Wizard-Query.png)
+![Welcome](https://azureplayer.net/wp-content/uploads/2018/01/SCD-Merge-Wizard-MainWindow.png)
+![Transformations](https://azureplayer.net/wp-content/uploads/2018/01/SCD-Merge-Wizard-Transformations-Type1-Type2.png)
+![Transformations](https://azureplayer.net/wp-content/uploads/2018/01/SCD-Merge-Wizard-Transformations0.png)
+![Output query](https://azureplayer.net/wp-content/uploads/2018/01/SCD-Merge-Wizard-Query.png)
 
 
 
@@ -37,4 +37,4 @@ The project has been migrated from [CodePlex](https://scdmergewizard.codeplex.co
 
 Original author: knyazs | [LinkedIn](https://au.linkedin.com/in/miljanradovic)
 
-Project Member:  Kamil Nowinski | [LinkedIn](https://www.linkedin.com/in/kamilnowinski/) | [Blog](http://SQLPlayer.net)
+Project Member:  Kamil Nowinski | [LinkedIn](https://www.linkedin.com/in/kamilnowinski/) | [Blog](http://AzurePlayer.net)
