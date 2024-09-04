@@ -35,8 +35,6 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
     <ROW Component="APPDIR" ComponentId="{0F236C97-9083-473D-A8BB-6653D7CD7AC3}" Directory_="APPDIR" Attributes="0"/>
-    <ROW Component="Interop.ADODB.dll" ComponentId="{AAEF4BDA-34B3-4AA4-A868-3048D286590F}" Directory_="APPDIR" Attributes="0" KeyPath="Interop.ADODB.dll"/>
-    <ROW Component="Interop.MSDASC.dll" ComponentId="{E5C4D1C2-1229-4AB0-BD16-5B39C2446D26}" Directory_="APPDIR" Attributes="0" KeyPath="Interop.MSDASC.dll"/>
     <ROW Component="ProductInformation" ComponentId="{94C3DE53-428A-474A-B2F0-E5A689A0B848}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
     <ROW Component="SHORTCUTDIR" ComponentId="{460272D5-B470-43E7-BEED-CBFFC9B3E6BE}" Directory_="SHORTCUTDIR" Attributes="0"/>
     <ROW Component="ScdMergeWizard.exe" ComponentId="{CFC4D643-5152-4C6C-98FD-F86A8741E891}" Directory_="APPDIR" Attributes="0" KeyPath="ScdMergeWizard.exe"/>
@@ -49,8 +47,6 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
     <ROW File="ScdMergeWizard.exe" Component_="ScdMergeWizard.exe" FileName="SCDMER~1.EXE|ScdMergeWizard.exe" Attributes="0" SourcePath="..\ScdMergeWizard\bin\Release\ScdMergeWizard.exe" SelfReg="false" DigSign="true"/>
     <ROW File="ScdMergeWizard.exe.config" Component_="ScdMergeWizard.exe.config" FileName="SCDMER~1.CON|ScdMergeWizard.exe.config" Attributes="0" SourcePath="..\ScdMergeWizard\bin\Release\ScdMergeWizard.exe.config" SelfReg="false"/>
-    <ROW File="Interop.ADODB.dll" Component_="Interop.ADODB.dll" FileName="INTERO~1.DLL|Interop.ADODB.dll" Attributes="0" SourcePath="..\ScdMergeWizard\obj\x86\Release\Interop.ADODB.dll" SelfReg="false"/>
-    <ROW File="Interop.MSDASC.dll" Component_="Interop.MSDASC.dll" FileName="INTERO~2.DLL|Interop.MSDASC.dll" Attributes="0" SourcePath="..\ScdMergeWizard\obj\x86\Release\Interop.MSDASC.dll" SelfReg="false"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.BootstrapperUISequenceComponent">
     <ROW Action="AI_DetectSoftware" Sequence="101"/>
@@ -125,8 +121,6 @@
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatCompsComponent">
-    <ROW Feature_="MainFeature" Component_="Interop.ADODB.dll"/>
-    <ROW Feature_="MainFeature" Component_="Interop.MSDASC.dll"/>
     <ROW Feature_="MainFeature" Component_="ProductInformation"/>
     <ROW Feature_="MainFeature" Component_="SHORTCUTDIR"/>
     <ROW Feature_="MainFeature" Component_="ScdMergeWizard.exe"/>
